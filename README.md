@@ -4,11 +4,11 @@
 
 by: Anastasia Gorina and Andres Chaves
 
-multiple regression analysis 
+multiple regression analysis
 
-================================================================================
+=========================================================================================
 
-    ├── Data                 <- The original, immutable data dump.
+    ├── Data                 <- The original and cleaned data used in this project,
     |
     ├── Notebooks            <- Jupyter notebooks.
     |
@@ -17,8 +17,8 @@ multiple regression analysis
     ├── README.md            <- The top-level README for developers using this project.
     |
     └── src                  <- Source code for use in this project.
-        |
-        └── example.py
 
 
-===============================================================================
+
+
+==========================================================================================

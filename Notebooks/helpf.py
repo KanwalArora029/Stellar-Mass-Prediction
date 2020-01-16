@@ -10,6 +10,20 @@ from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.linear_model import Lasso, Ridge, LinearRegression
 
 
+# making log columns
+def columns_log(cols, data):
+    for col in cols:
+        col_log = "log_"+col
+        data[col_log] = np.log(data[col])
+
+
+# making zcore columns
+def columns_zc(cols, data):
+    for col in cols:
+        col_zscore = col + '_zscore'
+        data[col_zscore] = (data[col] - data[col].mean())/data[col].std(ddof=0)
+
+
 def qqplot(x, y, data):
     lr_model = ols(formula=f"{y}~{x}", data=data).fit()
     pred_val = lr_model.fittedvalues.copy()
@@ -23,6 +37,7 @@ def scater(x, y, data):
     sns.jointplot(data[f'{x}'], data[f'{y}'], kind='reg')
 
 
+# Build a function that will output simple linear model for pair-by-pair comparison of the columns
 def regression(x, y, color):
     reg = linregress(x, y)
     corr, _ = pearsonr(x, y)

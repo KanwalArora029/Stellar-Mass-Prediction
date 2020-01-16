@@ -10,12 +10,13 @@ plt.style.use('seaborn')
 
 # read csv
 df = pd.read_csv("/Users/flatironschool/Documents/flatiron/Mod4_project/Data/planets_table.csv")
-df.head(3)
-
+df.shape
+df.columns
+df.pl_facility.value_counts()
 
 df = df[["pl_name", "pl_discmethod", "pl_pnum", "pl_orbper", "pl_orbeccen",
          "pl_bmassj", "pl_radj", "st_optmag", "gaia_gmag", "st_teff", "st_mass", "st_rad"]]
-
+df.isna().sum()
 sns.scatterplot(df.pl_radj, df.st_mass)
 
 sns.set(style="white", palette="muted", color_codes=True)
@@ -35,7 +36,6 @@ new_df = pd.read_csv(
     "/Users/flatironschool/Documents/flatiron/Mod4_project/Data/exoplanet_table.csv")
 new_df.head(3)
 new_df.shape
-new_df = new_df[new_df.st_teff.isna()]
 new_df.isna().sum()
 
 new_df = new_df[np.isfinite(new_df["st_mass"])]
@@ -58,22 +58,34 @@ for col in cols:
 
 star_df.head(2)
 
-
-lr_model = ols(formula='log_st_mass~log_st_rad', data=star_df).fit()
-lr_model.summary()
-
+lr_model_rad = ols(formula='log_st_mass~log_st_rad', data=star_df).fit()
+lr_model_rad.summary()
+lr_model_teff = ols(formula='log_st_mass~log_st_teff', data=star_df).fit()
+lr_model_teff.summary()
 sns.jointplot(star_df['log_st_mass'], star_df['log_st_rad'], kind='reg')
 
 sns.jointplot(star_df['log_st_mass'], star_df['log_st_teff'], kind='reg')
 
+
+
 # checking for our model - Homoscedasticity
-pred_val = lr_model.fittedvalues.copy()
+pred_val_rad = lr_model_rad.fittedvalues.copy()
+pred_val_teff = lr_model_teff.fittedvalues.copy()
 true_val = star_df['log_st_mass'].values.copy()
-residual = true_val - pred_val
+residual_rad = true_val - pred_val_rad
+residual_teff = true_val - pred_val_teff
 
 fig, ax = plt.subplots(figsize=(6, 2.5))
-ax.scatter(star_df['log_st_rad'], residual)
+ax.scatter(star_df['log_st_rad'], residual_rad)
+fig, ax = plt.subplots(figsize=(6, 2.5))
+ax.scatter(star_df['log_st_rad'], residual_teff)
 
 
 fig, ax = plt.subplots(figsize=(6, 2.5))
-sp.stats.probplot(residual, plot=ax, fit=True)
+sp.stats.probplot(residual_rad, plot=ax, fit=True);
+
+
+
+fig, ax = plt.subplots(figsize=(6, 2.5))
+sp.stats.probplot(residual_teff, plot=ax, fit=True);
+df

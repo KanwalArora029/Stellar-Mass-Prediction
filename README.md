@@ -23,7 +23,7 @@ multiple regression analysis
 
 
 =========================================================================================
-NASA's search for exoplanets began over 30 years ago, and the exploration of the stars started even earlier in history. Today NASA has information about over 4000 exoplanets and their host stars. Some of the values are observed and measured (directly or indirectly), some are calculated. The goal of this project was to use NASA's dataset to predict the stellar mass. 
+NASA's search for exoplanets began over 30 years ago, and the exploration of the stars started even earlier in history. Today NASA has information about over 4000 exoplanets and their host stars. Some of the values are observed and measured (directly or indirectly), some are calculated. The goal of this project was to use NASA's dataset to predict stellar mass. 
 
 Obtaining data:
 NASA has multiple API's https://api.nasa.gov/. We used The Exoplanet Archive API that has the information about all confirmed exoplanets and their stars.

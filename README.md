@@ -1,6 +1,6 @@
 ============
 ### Stellar Mass Prediction
-Building multiple regression model to predict the mass of the stars
+### Building multiple regression model to predict the mass of the stars
 ============
 
 by: Anastasia Gorina and Andres Chaves
@@ -22,7 +22,7 @@ multiple regression analysis
 
 
 
-==========================================================================================
+=========================================================================================
 NASA's search for exoplanets began over 30 years ago, and the exploration of the stars started even earlier in history. Today NASA has information about over 4000 exoplanets and their host stars. Some of the values are observed and measured (directly or indirectly), some are calculated. The goal of this project was to use NASA's dataset to predict the stellar mass. 
 
 Obtaining data:

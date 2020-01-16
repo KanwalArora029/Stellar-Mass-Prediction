@@ -1,6 +1,9 @@
-#import scipy as sp
+import scipy as sp
+from statsmodels.formula.api import ols
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def qqplot(x, y, data):
